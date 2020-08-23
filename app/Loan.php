@@ -11,7 +11,7 @@ class Loan extends Model
     ];
     public function financials($value='')
     {
-    	return $this->belongsTo('App\Financial_Info');
+    	return $this->belongsTo('App\Financial');
     }
     public function payments($value='')
     {

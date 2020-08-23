@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoansTable extends Migration
+class CreateEducationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateLoansTable extends Migration
      */
     public function up()
     {
-        Schema::create('loans', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
-            $table->tinyInteger('status')->default(0);
-            $table->date('date');
-            $table->integer('loantime');
-            $table->unsignedBigInteger('financial_id');
+            $table->string('rollno');
+            $table->text('year');
+            $table->text('university');
+            $table->text('semester');
+            $table->unsignedBigInteger('student_id');
             $table->timestamps();
-
-            $table->foreign('financial_id')
+            $table->foreign('student_id')
                 ->references('id')
-                ->on('financials')
+                ->on('students')
                 ->onDelete('cascade');
         });
     }
@@ -36,6 +35,6 @@ class CreateLoansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loans');
+        Schema::dropIfExists('education');
     }
 }

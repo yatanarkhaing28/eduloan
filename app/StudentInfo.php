@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Student_Info extends Model
+class StudentInfo extends Model
 {
     protected $fillable = [
         'name','photo','fathername','nrcno','state','city','phoneno','user_id'
