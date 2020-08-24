@@ -26,8 +26,8 @@ class LoanController extends Controller
      */
     public function create()
     {
-        // $financials = Financial::all();
-        // return view('backend.loans.create',compact('financials'));
+        $financials = Financial::all();
+        return view('backend.loans.create',compact('financials'));
     }
 
     /**
@@ -44,7 +44,9 @@ class LoanController extends Controller
             'amount'=>'required',
             'loantime'=>'required',
             'date'=>'required',
-            'financial'=>'required',
+            'financial1'=>'required',
+            'financial2'=>'required',
+            'financial3'=>'required',
             
         ]);
         // If include file, upload
@@ -55,7 +57,9 @@ class LoanController extends Controller
         $loan->amount=$request->amount;
         $loan->loantime=$request->loantime;
         $loan->date= date('Y-m-d');
-        $loan->financial_id=$request->financial;
+        $loan->financial_id=$request->financial1;
+        $loan->financial_id=$request->financial2;
+        $loan->financial_id=$request->financial3;
         
         $loan->save();
         // Redirect

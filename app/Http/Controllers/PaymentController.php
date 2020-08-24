@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Loan;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -13,7 +15,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments=Payment::all();
+        return view('backend.payments.index',compact('payments'));
     }
 
     /**
@@ -23,7 +26,8 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        $loans = Loan::all();
+        return view('backend.payments.create',compact('loans'));
     }
 
     /**
@@ -34,7 +38,30 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // Validation
+        $request->validate([
+            'installment'=>'required',
+            'balance'=>'required',
+            'paymentdate'=>'required',
+            'loan'=>'required',
+            
+            
+        ]);
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $payment=new Payment;
+        $payment->installment=$request->installment;
+        $payment->balance=$request->balance;
+        $payment->paymentdate= date('Y-m-d');
+        $payment->loan_id=$request->loan;
+        
+        
+        $payment->save();
+        // Redirect
+        return redirect()->route('payments.index');
     }
 
     /**

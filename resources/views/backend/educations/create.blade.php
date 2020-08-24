@@ -44,7 +44,7 @@
 						<label>Student</label>
 						<select name="student" class="form-control">
 							<option>Choose....
-								@foreach($stus as $student)
+								@foreach($students as $student)
 									<option value="{{$student->id}}">{{$student->name}}</option>
 								@endforeach
 							</option>	

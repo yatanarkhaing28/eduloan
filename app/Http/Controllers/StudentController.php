@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Stu;
-use App\Education;
+use App\Student;
+use App\Educationdetail;
 use App\Financial;
 
 class StudentController extends Controller
-{
+{   
+    // public function __construct($value=''){
+    //     $this->middleware('role:admin')->except('store');
+    //     $this->middleware('role:customer')->only('store');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students=Stu::all();
+        $students=Student::all();
         return view('backend.students.index',compact('students'));
     }
 
@@ -58,7 +62,7 @@ class StudentController extends Controller
 
         $myfile='backend/studentimg/'.$imageName;
         // Data insert
-        $student=new Stu;
+        $student=new Student;
         $student->name=$request->name;
         $student->photo=$myfile;
         $student->fathername=$request->fathername;
@@ -81,8 +85,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student=Stu::find($id);
-        // dd($item;)
+        $student=Student::find($id);
+        // dd($student->educationdetails);
         return view('backend.students.show',compact('student'));
     }
 
@@ -94,7 +98,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student=Student::find($id);
+        return view('backend.students.edit',compact('student'));
     }
 
     /**
@@ -106,7 +111,36 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'photo'=>'sometimes',
+            'fathername'=>'required',
+            'nrcno'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+            'phoneno'=>'required',
+
+        ]);
+
+        // If include file, upload
+        // file upload
+        if ($request->hasFile('photo')) {
+
+        $imageName=time().'.'.$request->photo->extension();
+
+        $request->photo->move(public_path('backend/studentimg'),$imageName);
+
+        $myfile='backend/studentimg/'.$imageName;
+        }else{
+            $myfile=$request->oldphoto;
+        }
+        // Data insert
+        $category=Category::find($id);
+        $category->name=$request->name;
+        $category->photo=$myfile;
+        $category->name=$request->name;
+        $category->save();
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -117,6 +151,9 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student=Student::find($id);
+        $student->delete();
+        // redirect
+        return redirect()->route('students.index');
     }
 }

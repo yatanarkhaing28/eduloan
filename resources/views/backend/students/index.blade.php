@@ -33,16 +33,20 @@
 				<td>{{$student->city}}</td>
 				<td>{{$student->phoneno}}</td>
 
-				{{-- <td>
-				<a href="{{route('students.edit',$loan->id)}}" class="btn btn-warning">Edit</a>
+				<td>
+				
 
-				<form method="post" action="{{route('loans.destroy',$loan->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+				<form method="post" action="{{route('students.destroy',$student->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
 					@csrf
 					@method('DELETE')
+					<a href="{{route('students.show',$student->id)}}" class="btn btn-warning">
+						Edu Detail
+
+					</a>
 					<input type="submit" name="btnsubmit" value="Delete" class="btn btn-danger">
 				</form>
 				
-			</td> --}}
+			</td>
 			</tr>
 			@endforeach
 				</tbody>

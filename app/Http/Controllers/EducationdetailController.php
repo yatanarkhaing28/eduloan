@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Stu;
-use App\Education;
+use App\Student;
+use App\Educationdetail;
 
 class EducationdetailController extends Controller
 {
@@ -15,7 +15,7 @@ class EducationdetailController extends Controller
      */
     public function index()
     {
-        $educationdetails=Education::all();
+        $educationdetails=Educationdetail::all();
         return view('backend.educationdetails.index',compact('educationdetails'));
     }
 
@@ -26,7 +26,7 @@ class EducationdetailController extends Controller
      */
     public function create()
     {
-        $students = Stu::all();
+        $students = Student::all();
         return view('backend.educationdetails.create',compact('students'));
     }
 
@@ -52,8 +52,11 @@ class EducationdetailController extends Controller
         // file upload
         
         // Data insert
-        $educationdetail=new Education;
-        $educationdetail->name=$request->name;
+        $educationdetail=new Educationdetail;
+        $educationdetail->rollno=$request->rollno;
+        $educationdetail->university=$request->university;
+        $educationdetail->year=$request->year;
+        $educationdetail->semester=$request->semester;
         $educationdetail->student_id=$request->student;
         
         $educationdetail->save();

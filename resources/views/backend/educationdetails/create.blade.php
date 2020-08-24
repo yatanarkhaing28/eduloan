@@ -17,7 +17,7 @@
 			@endif
 
 
-			<form method="POST" action="{{route('educations.store')}}" enctype="multipart/form-data">
+			<form method="POST" action="{{route('educationdetails.store')}}" enctype="multipart/form-data">
 				@csrf
 				
 				<div class="form-group">

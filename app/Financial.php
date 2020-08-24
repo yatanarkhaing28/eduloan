@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Financial extends Model
 {
-    protected $fillable = [
-        'education_exp','accomodation_exp','utility_exp','monthly_income','student_id'
-    ];
-    // public function stus($value='')
-    // {
-    // 	return $this->hasOne('App\Stu');
-    // }
-    // public function loans($value='')
-    // {
-    // 	return $this->hasMany('App\Loan');
-    // }
+   protected $fillable = [
+        'educationexp', 'accomodationexp','utilityexp','monthlyincome','student_id'
+    ]; 
+   public function studentdetails($value='')
+   {
+   	return $this->hasOne('App\Student');
+   }
+
+   public function loans($value='')
+   {
+   	return $this->hasMany('App\Loan');
+   }
 }

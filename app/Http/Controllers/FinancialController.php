@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Stu;
+use App\Student;
 use App\Financial;
 
 class FinancialController extends Controller
@@ -26,7 +26,7 @@ class FinancialController extends Controller
      */
     public function create()
     {
-        $students = Stu::all();
+        $students = Student::all();
         return view('backend.financials.create',compact('students'));
     }
 
