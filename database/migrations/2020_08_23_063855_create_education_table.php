@@ -21,9 +21,10 @@ class CreateEducationTable extends Migration
             $table->text('semester');
             $table->unsignedBigInteger('student_id');
             $table->timestamps();
+
             $table->foreign('student_id')
                 ->references('id')
-                ->on('students')
+                ->on('stus')
                 ->onDelete('cascade');
         });
     }

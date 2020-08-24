@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Stu;
+use App\Education;
 
 class EducationController extends Controller
 {
@@ -13,7 +15,8 @@ class EducationController extends Controller
      */
     public function index()
     {
-        //
+        $educations=Education::all();
+        return view('backend.educations.index',compact('educations'));
     }
 
     /**
@@ -23,7 +26,8 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+        $stus = Stu::all();
+        return view('backend.educations.create',compact('stus'));
     }
 
     /**
@@ -34,7 +38,27 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // Validation
+        $request->validate([
+            'rollno'=>'required',
+            'university'=>'required',
+            'year'=>'required',
+            'semester'=>'required',
+            'student'=>'required',
+            
+        ]);
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $education=new Education;
+        $education->name=$request->name;
+        $education->student_id=$request->student;
+        
+        $education->save();
+        // Redirect
+        return redirect()->route('educations.index');
     }
 
     /**
@@ -45,7 +69,7 @@ class EducationController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

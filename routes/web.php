@@ -20,3 +20,19 @@ Route::resource('educations', 'EducationController'); //7 (get-4/post-1/put-1/de
 Route::resource('financials', 'FinancialController'); //7 (get-4/post-1/put-1/delete-1)
 Route::resource('loans', 'LoanController'); //7 (get-4/post-1/put-1/delete-1)
 Route::resource('payments', 'PaymentController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('educationdetails', 'EducationdetailController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('financialinfos', 'FinancialinfoController'); //7 (get-4/post-1/put-1/delete-1)
+
+
+//Frontend
+Route::get('/','FrontendController@home')->name('homepage');
+Route::get('register','FrontendController@register')->name('registerpage');
+Route::get('login','FrontendController@login')->name('loginpage');
+// Route::get('checkout','FrontendController@checkout')->name('checkoutpage');
+Route::get('profile','FrontendController@profile')->name('profilepage');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

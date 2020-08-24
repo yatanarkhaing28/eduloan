@@ -22,13 +22,9 @@ class CreateStudentsTable extends Migration
             $table->text('state');
             $table->text('city');
             $table->integer('phoneno');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            
         });
     }
 

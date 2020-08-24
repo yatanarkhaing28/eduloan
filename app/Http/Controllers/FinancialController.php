@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Stu;
+use App\Financial;
 
 class FinancialController extends Controller
 {
@@ -13,7 +15,8 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        //
+        $financials=Financial::all();
+        return view('backend.financials.index',compact('financials'));
     }
 
     /**
@@ -23,7 +26,8 @@ class FinancialController extends Controller
      */
     public function create()
     {
-        //
+        $students = Stu::all();
+        return view('backend.financials.create',compact('students'));
     }
 
     /**
@@ -34,7 +38,30 @@ class FinancialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // Validation
+        $request->validate([
+            'educationexp'=>'required',
+            'accomodationexp'=>'required',
+            'utilityexp'=>'required',
+            'monthlyincome'=>'required',
+            'student'=>'required',
+            
+        ]);
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $financial=new Financial;
+        $financial->education_exp=$request->educationexp;
+        $financial->accomodation_exp=$request->accomodationexp;
+        $financial->utility_exp=$request->utilityexp;
+        $financial->monthly_income=$request->monthlyincome;
+        $financial->student_id=$request->student;
+        
+        $financial->save();
+        // Redirect
+        return redirect()->route('financials.index');
     }
 
     /**

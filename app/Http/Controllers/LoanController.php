@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Loan;
-use App\Financial_Info;
+use App\Financial;
 
 class LoanController extends Controller
 {
@@ -26,8 +26,8 @@ class LoanController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('backend.subcategories.create',compact('categories'));
+        // $financials = Financial::all();
+        // return view('backend.loans.create',compact('financials'));
     }
 
     /**
@@ -38,7 +38,28 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // Validation
+        $request->validate([
+            'amount'=>'required',
+            'loantime'=>'required',
+            'date'=>'required',
+            'financial'=>'required',
+            
+        ]);
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $loan=new Loan;
+        $loan->amount=$request->amount;
+        $loan->loantime=$request->loantime;
+        $loan->date= date('Y-m-d');
+        $loan->financial_id=$request->financial;
+        
+        $loan->save();
+        // Redirect
+        return redirect()->route('loans.index');
     }
 
     /**
