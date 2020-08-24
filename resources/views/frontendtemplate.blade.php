@@ -8,6 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  {{-- form meta tag --}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="colorlib.com">
+
   <title>One Page Wonder - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
@@ -19,6 +23,16 @@
 
   <!-- Custom styles for this template -->
   <link href="{{asset('frontend/css/one-page-wonder.min.css')}}" rel="stylesheet">
+
+  {{-- form link tag --}}
+  <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="{{asset('frontend/fonts/material-design-iconic-font/css/material-design-iconic-font.css')}}">
+
+    <!-- DATE-PICKER -->
+    <link rel="stylesheet" href="{{asset('frontend/vendor/date-picker/css/datepicker.min.css')}}">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 
 </head>
 
@@ -87,6 +101,18 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{{asset('frontend/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  {{-- form script --}}
+
+  <script src="{{asset('frontend/js/jquery-3.3.1.min.js')}}"></script> 
+    <!-- JQUERY STEP -->
+    <script src="{{asset('frontend/js/jquery.steps.js')}}"></script>
+
+    <!-- DATE-PICKER -->
+    <script src="{{asset('frontend/vendor/date-picker/js/datepicker.js')}}"></script>
+    <script src="{{asset('frontend/vendor/date-picker/js/datepicker.en.js')}}"></script>
+
+    <script src="{{asset('frontend/js/main.js')}}"></script>
 
 </body>
 

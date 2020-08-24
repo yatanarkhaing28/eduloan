@@ -13,7 +13,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        // $students=Student::all();
+        return view('frontend.forms.index');
     }
 
     /**
