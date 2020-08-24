@@ -72,7 +72,10 @@ class PaymentController extends Controller
      */
     public function show($id)
     {
-        //
+        $loans=Loan::all();
+        $payment=Payment::find($id);
+
+        return view('backend.payments.edit',compact('loans','payment'));
     }
 
     /**
@@ -83,7 +86,10 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $loans=Loan::all();
+        $payment=Payment::find($id);
+
+        return view('backend.payments.edit',compact('loans','payment'));
     }
 
     /**
@@ -95,7 +101,24 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            
+            'installment' =>'required',
+            'balance' =>'required',
+            'paymentdate' =>'required',
+            'loan' =>'required'
+
+        ]);
+        //data update
+        $payment=Payment::find($id);
+        $payment->installment=$request->installment;
+        $payment->balance=$request->balance;
+        $payment->paymentdate=$request->paymentdate;
+        $payment->loan_id=$request->loan;
+        $payment->save();
+
+        //redirect
+        return redirect()->route('payments.index');
     }
 
     /**
@@ -106,6 +129,9 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $payment=Payment::find($id);
+        $payment->delete();
+        // redirect
+        return redirect()->route('payments.index');
     }
 }
