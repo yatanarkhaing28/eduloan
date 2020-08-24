@@ -135,12 +135,16 @@ class StudentController extends Controller
             $myfile=$request->oldphoto;
         }
         // Data insert
-        $category=Category::find($id);
-        $category->name=$request->name;
-        $category->photo=$myfile;
-        $category->name=$request->name;
-        $category->save();
-        return redirect()->route('categories.index');
+        $student=Student::find($id);
+        $student->name=$request->name;
+        $student->photo=$myfile;
+        $student->fathername=$request->fathername;
+        $student->nrcno=$request->nrcno;
+        $student->state=$request->state;
+        $student->city=$request->city;
+        $student->phoneno=$request->phoneno;
+        $student->save();
+        return redirect()->route('students.index');
     }
 
     /**

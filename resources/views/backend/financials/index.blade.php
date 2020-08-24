@@ -12,6 +12,7 @@
 				<th>Accomodation Exp</th>
 				<th>Utility Exp</th>
 				<th>Monthly Income</th>
+				<th>Action</th>
 				
 			</tr>
 		</thead>
@@ -27,16 +28,16 @@
 				<td>{{$financial->utility_exp}}</td>
 				<td>{{$financial->monthly_income}}</td>
 
-				{{-- <td>
-				<a href="{{route('subcategories.edit',$subcategory->id)}}" class="btn btn-warning">Edit</a>
+				<td>
+				<a href="{{route('financials.edit',$financial->id)}}" class="btn btn-warning">Edit</a>
 
-				<form method="post" action="{{route('subcategories.destroy',$subcategory->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+				<form method="post" action="{{route('financials.destroy',$financial->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
 					@csrf
 					@method('DELETE')
 					<input type="submit" name="btnsubmit" value="Delete" class="btn btn-danger">
 				</form>
 				
-			</td> --}}
+			</td>
 			</tr>
 			@endforeach
 				</tbody>

@@ -45,7 +45,7 @@ class EducationdetailController extends Controller
             'university'=>'required',
             'year'=>'required',
             'semester'=>'required',
-            'student'=>'required',
+            'student'=>'required'
             
         ]);
         // If include file, upload
@@ -83,7 +83,9 @@ class EducationdetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $students=Student::all();
+        $educationdetail=Educationdetail::find($id);
+        return view('backend.educationdetails.edit',compact('students', 'educationdetail'));
     }
 
     /**
@@ -95,7 +97,27 @@ class EducationdetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'rollno'=>'required',
+            'university'=>'required',
+            'year'=>'required',
+            'semester'=>'required',
+            'student'=>'required',
+        ]);
+
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $educationdetail=Educationdetail::find($id);
+        $educationdetail->rollno=$request->rollno;
+        $educationdetail->university=$request->university;
+        $educationdetail->year=$request->year;
+        $educationdetail->semester=$request->semester;
+        $educationdetail->student_id=$request->student;
+        
+        $educationdetail->save();
+        return redirect()->route('educationdetails.index');
     }
 
     /**
@@ -106,6 +128,9 @@ class EducationdetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $educationdetail=Educationdetail::find($id);
+        $educationdetail->delete();
+        // redirect
+        return redirect()->route('educationdetails.index'); 
     }
 }

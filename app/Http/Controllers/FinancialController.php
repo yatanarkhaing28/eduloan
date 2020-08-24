@@ -83,7 +83,9 @@ class FinancialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $students=Student::all();
+        $financial=Financial::find($id);
+        return view('backend.financials.edit',compact('students', 'financial'));
     }
 
     /**
@@ -95,7 +97,27 @@ class FinancialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'educationexp'=>'required',
+            'accomodationexp'=>'required',
+            'utilityexp'=>'required',
+            'monthlyincome'=>'required',
+            'student'=>'required',
+        ]);
+
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $financial=Financial::find($id);
+        $financial->education_exp=$request->educationexp;
+        $financial->accomodation_exp=$request->accomodationexp;
+        $financial->utility_exp=$request->utilityexp;
+        $financial->monthly_income=$request->monthlyincome;
+        $financial->student_id=$request->student;
+        
+        $financial->save();
+        return redirect()->route('financials.index');
     }
 
     /**
@@ -106,6 +128,9 @@ class FinancialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $financial=Financial::find($id);
+        $financial->delete();
+        // redirect
+        return redirect()->route('financials.index'); 
     }
 }

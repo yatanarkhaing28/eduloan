@@ -7,15 +7,15 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>No</th>
-				<th>Name</th>
-				<th>Photo</th>
-				<th>Fathername</th>
-				<th>NrcNo</th>
-				<th>State</th>
-				<th>City</th>
-				<th>Phone No</th>
-				<th>Action</th>
+				<th scope="col">No</th>
+				<th scope="col">Name</th>
+				<th scope="col">Photo</th>
+				<th scope="col">Fathername</th>
+				<th scope="col">NrcNo</th>
+				{{-- <th scope="col">State</th> --}}
+				<th scope="col">City</th>
+				<th scope="col">Phone No</th>
+				<th scope="col">Action</th>
 				
 			</tr>
 		</thead>
@@ -29,21 +29,20 @@
 				<td><img src="{{asset($student->photo)}}" width="80" height="50"></td>
 				<td>{{$student->fathername}}</td>
 				<td>{{$student->nrcno}}</td>
-				<td>{{$student->state}}</td>
+				{{-- <td>{{$student->state}}</td> --}}
 				<td>{{$student->city}}</td>
 				<td>{{$student->phoneno}}</td>
 
 				<td>
 				
-
-				<form method="post" action="{{route('students.destroy',$student->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+				<a href="{{route('students.edit',$student->id)}}" class="btn btn-warning btn-sm">Edit</a>
+				<form method="post" action="{{route('students.destroy',$student->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block btn-sm">
 					@csrf
 					@method('DELETE')
-					<a href="{{route('students.show',$student->id)}}" class="btn btn-warning">
-						Edu Detail
+					<a href="{{route('students.show',$student->id)}}" class="btn btn-info d-inline-block btn-sm">Detail</a>
 
-					</a>
-					<input type="submit" name="btnsubmit" value="Delete" class="btn btn-danger">
+					{{-- <a href="{{route('students.show',$student->id)}}" class="btn btn-info d-inline-block btn-sm" id="financial">Financial Info</a> --}}
+					<input type="submit" name="btnsubmit" value="Delete" class="btn btn-danger btn-sm">
 				</form>
 				
 			</td>
@@ -52,5 +51,6 @@
 				</tbody>
 			</table>
 		</div>
+	
 	
 @endsection

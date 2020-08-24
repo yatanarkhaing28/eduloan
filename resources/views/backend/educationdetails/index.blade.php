@@ -12,6 +12,7 @@
 				<th>University</th>
 				<th>Year</th>
 				<th>Semester</th>
+				<th>Action</th>
 				
 			</tr>
 		</thead>
@@ -27,16 +28,16 @@
 				<td>{{$educationdetail->year}}</td>
 				<td>{{$educationdetail->semester}}</td>
 
-				{{-- <td>
-				<a href="{{route('subcategories.edit',$subcategory->id)}}" class="btn btn-warning">Edit</a>
+				<td>
+				<a href="{{route('educationdetails.edit',$educationdetail->id)}}" class="btn btn-warning">Edit</a>
 
-				<form method="post" action="{{route('subcategories.destroy',$subcategory->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+				<form method="post" action="{{route('educationdetails.destroy',$educationdetail->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
 					@csrf
 					@method('DELETE')
 					<input type="submit" name="btnsubmit" value="Delete" class="btn btn-danger">
 				</form>
 				
-			</td> --}}
+			</td>
 			</tr>
 			@endforeach
 				</tbody>
