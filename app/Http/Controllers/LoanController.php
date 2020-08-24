@@ -74,7 +74,9 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        //
+        $loan=Loan::find($id);
+        // dd($item;)
+        return view('backend.loans.show',compact('loan'));
     }
 
     /**
@@ -85,7 +87,9 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $financials=Financial::all();
+        $loan=Loan::find($id);
+        return view('backend.loans.edit',compact('financials', 'loan'));
     }
 
     /**
@@ -97,7 +101,25 @@ class LoanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'amount'=>'required',
+            'date'=>'required',
+            'loantime'=>'required',
+            'financial'=>'required',
+        ]);
+
+        // If include file, upload
+        // file upload
+        
+        // Data insert
+        $loan=Loan::find($id);
+        $loan->amount=$request->amount;
+        $loan->date=$request->date;
+        $loan->loantime=$request->loantime;
+        $loan->financial_id=$request->financial;
+        
+        $loan->save();
+        return redirect()->route('loans.index');
     }
 
     /**
@@ -108,6 +130,9 @@ class LoanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $loan=Loan::find($id);
+        $loan->delete();
+        // redirect
+        return redirect()->route('loans.index'); 
     }
 }
