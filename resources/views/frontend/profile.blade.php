@@ -1,5 +1,5 @@
 @extends('frontendtemplate')
-@section('sidebar')
+@section('content')
 
 <div class="col-lg-9">
 	{{-- <h2 class="text-center">Customer Profile Page</h2> --}}

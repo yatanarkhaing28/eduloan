@@ -13,15 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
 
-Route::resource('students', 'StudentController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('educations', 'EducationController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('financials', 'FinancialController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('loans', 'LoanController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('payments', 'PaymentController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('educationdetails', 'EducationdetailController'); //7 (get-4/post-1/put-1/delete-1)
-Route::resource('financialinfos', 'FinancialinfoController'); //7 (get-4/post-1/put-1/delete-1)
+
 
 
 //Frontend
@@ -32,6 +25,33 @@ Route::get('login','FrontendController@login')->name('loginpage');
 Route::get('profile','FrontendController@profile')->name('profilepage');
 
 Route::resource('index', 'FormController'); //7 (get-4/post-1/put-1/delete-1)
+Route::get('stuinfo','FrontendController@stuinfo')->name('stuinfo');
+Route::resource('edu', 'EducationformController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('finan', 'FinancialformController'); //7 (get-4/post-1/put-1/delete-1)
+
+
+
+
+
+
+
+ Route::middleware('role:admin')->group(function () {
+
+
+Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
+
+Route::resource('students', 'StudentController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('educations', 'EducationController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('financials', 'FinancialController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('loans', 'LoanController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('payments', 'PaymentController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('educationdetails', 'EducationdetailController'); //7 (get-4/post-1/put-1/delete-1)
+Route::resource('financialinfos', 'FinancialinfoController'); //7 (get-4/post-1/put-1/delete-1)
+Route::post('stuinfo','FrontendController@stuinfo')->name('stuinfo');
+});
+
+
+
 
 
 

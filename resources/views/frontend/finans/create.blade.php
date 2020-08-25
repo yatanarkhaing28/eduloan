@@ -1,7 +1,7 @@
 @extends('frontendtemplate')
 @section('content')
 <div class="container-fluid">
-	<h2>Education Create (Form)</h2>
+	<h2>Financial Create (Form)</h2>
 
 
 	<div class="row">
@@ -17,27 +17,27 @@
 			@endif
 
 
-			<form method="POST" action="{{route('educations.store')}}" enctype="multipart/form-data">
+			<form method="POST" action="{{route('finan.store')}}" enctype="multipart/form-data">
 				@csrf
 				
 				<div class="form-group">
-					<label>RollNo</label>
-					<input type="text" name="rollno" class="form-control">
+					<label>Education Exp</label>
+					<input type="text" name="educationexp" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>University</label>
-					<input type="text" name="university" class="form-control">
+					<label>Accomodation Exp</label>
+					<input type="text" name="accomodationexp" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Year</label>
-					<input type="text" name="year" class="form-control">
+					<label>Utility Exp</label>
+					<input type="text" name="utilityexp" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Semester</label>
-					<input type="text" name="semester" class="form-control">
+					<label>Monthly Income</label>
+					<input type="text" name="monthlyincome" class="form-control">
 				</div>
 
 				<div class="form-group">

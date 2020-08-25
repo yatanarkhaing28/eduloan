@@ -1,6 +1,6 @@
 @extends('frontendtemplate')
-@section('sidebar')
-		<div class="wrapper">
+@section('content')
+		{{-- <div class="wrapper">
 			<div class="image-holder">
 				<img src="images/form-wizard.png" alt="">
 			</div>
@@ -186,7 +186,7 @@
 	                </section>
             	</div>
             </form>
-		</div>
+		</div> --}}
 
 		
 <!-- Template created and distributed by Colorlib -->
