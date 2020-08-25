@@ -12,6 +12,17 @@ class FrontendController extends Controller
     	// // dd($items);
     	return view('frontend.home');
     }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
     public function register()
     {
         return view('frontend.register');

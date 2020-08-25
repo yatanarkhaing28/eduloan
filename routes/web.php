@@ -30,6 +30,8 @@ Route::get('register','FrontendController@register')->name('registerpage');
 Route::get('login','FrontendController@login')->name('loginpage');
 // Route::get('checkout','FrontendController@checkout')->name('checkoutpage');
 Route::get('profile','FrontendController@profile')->name('profilepage');
+Route::get('about','FrontendController@about')->name('about');
+Route::get('contact','FrontendController@contact')->name('contact');
 
 Route::resource('index', 'FormController'); //7 (get-4/post-1/put-1/delete-1)
 

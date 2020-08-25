@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Education Loan</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -28,9 +28,10 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+
         </div>
         <div class="sidebar-brand-text mx-3">Education Loan</div>
       </a>
@@ -48,32 +49,34 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+      {{-- <!-- Heading -->
       <div class="sidebar-heading">
         Interface
-      </div>
+      </div> --}}
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="" >
-          <i class="fas fa-sitemap"></i>
-          <span>Students</span>
+        <a class="nav-link collapsed" href="{{route('students.index')}}" >
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+
+            <span>Student Information</span>
         </a>
         
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="fas fa-list"></i>
-          <span>Orders</span>
+        <a class="nav-link collapsed" href="{{route('educationdetails.index')}}">
+          <i class="fa fa-address-card" aria-hidden="true"></i>
+          <span>Education Detail</span>
         </a>
         
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Setting</span>
+        <a class="nav-link collapsed" href="{{route('financials.index')}}">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          
+            <span>Financial Infomation</span>
         </a>
         
       </li>
@@ -82,32 +85,32 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
+      {{-- <div class="sidebar-heading">
         Addons
-      </div>
+      </div> --}}
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Brands</span>
-        </a>
-        
+        <a class="nav-link" href="{{route('loans.index')}}">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+          <span>Loan</span></a>
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Category</span></a>
+        <a class="nav-link" href="{{route('payments.index')}}">
+          <i class="fa fa-credit-card" aria-hidden="true"></i>
+
+          <span>Payment</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="">
           <i class="fas fa-fw fa-table"></i>
           <span>Subcategory</span></a>
-      </li>
+      </li> --}}
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

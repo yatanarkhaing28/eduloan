@@ -1,5 +1,5 @@
 @extends('frontendtemplate')
-@section('content')
+@section('sidebar')
 <div class="col-lg-9 my-4">
 	<h2 style="text-align: center;">Customer Login Page</h2>
 	<div class="container">

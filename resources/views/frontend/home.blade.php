@@ -3,18 +3,21 @@
 <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
+        {{-- <div><img class="img-fluid" src="frontend/images/img1.jpg"></div> --}}
         <h1 class="masthead-heading mb-0">Education Loan</h1>
         <h2 class="masthead-subheading mb-0">Brighter Future</h2>
         <a href="{{route('index.index')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
-      </div>
+      
     </div>
-    <div class="bg-circle-1 bg-circle"></div>
+    </div>
+    {{-- <div class="bg-circle-1 bg-circle"></div>
     <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div> --}}
+    {{-- <div class="bg-circle-4 bg-circle"></div> --}}
+    {{-- <div><img class="img-fluid" src="frontend/images/img1.jpg"></div> --}}
   </header>
 
-  <section>
+  {{-- <section>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
@@ -55,7 +58,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/03.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="{{asset('frontend/img/01.jpg')}}" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
@@ -66,5 +69,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   @endsection
