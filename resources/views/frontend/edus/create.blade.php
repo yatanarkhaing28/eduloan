@@ -17,7 +17,7 @@
 			@endif
 
 
-			<form method="POST" action="{{route('educations.store')}}" enctype="multipart/form-data">
+			<form method="POST" action="{{route('edu.store')}}" enctype="multipart/form-data">
 				@csrf
 				
 				<div class="form-group">
@@ -45,7 +45,7 @@
 						<select name="student" class="form-control">
 							<option>Choose....
 								@foreach($students as $student)
-									<option value="{{$student->id}}">{{$student->name}}</option>
+									<option value="{{$student->id}}" readonly="">{{$student->name}}</option>
 								@endforeach
 							</option>	
 

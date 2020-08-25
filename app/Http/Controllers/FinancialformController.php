@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Financial;
 
-class FormController extends Controller
+class FinancialformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        // $students=Student::all();
-
-        return view('frontend.forms.index');
+        //
     }
 
     /**
@@ -26,8 +25,8 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('frontend.forms.create');
-        
+        $students = Student::all();
+        return view('frontend.finans.create',compact('students'));
     }
 
     /**
@@ -38,39 +37,31 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-         // dd($request);
+        // dd($request);
         // Validation
         $request->validate([
-            'name'=>'required',
-            'photo'=>'required',
-            'fathername'=>'required',
-            'nrcno'=>'required',
-            'state'=>'required',
-            'city'=>'required',
-            'phoneno'=>'required',
+            'educationexp'=>'required',
+            'accomodationexp'=>'required',
+            'utilityexp'=>'required',
+            'monthlyincome'=>'required',
+            'student'=>'required',
             
         ]);
         // If include file, upload
         // file upload
-        $imageName=time().'.'.$request->photo->extension();
-
-        $request->photo->move(public_path('backend/studentimg'),$imageName);
-
-        $myfile='backend/studentimg/'.$imageName;
+        
         // Data insert
-        $student=new Student;
-        $student->name=$request->name;
-        $student->photo=$myfile;
-        $student->fathername=$request->fathername;
-        $student->nrcno=$request->nrcno;
-        $student->state=$request->state;
-        $student->city=$request->city;
-        $student->phoneno=$request->phoneno;
+        $financial=new Financial;
+        $financial->education_exp=$request->educationexp;
+        $financial->accomodation_exp=$request->accomodationexp;
+        $financial->utility_exp=$request->utilityexp;
+        $financial->monthly_income=$request->monthlyincome;
+        $financial->student_id=$request->student;
         
-        
-        $student->save();
+        $financial->save();
         // Redirect
-        return redirect()->route('finan.create');
+        return redirect('/');
+        // ->route('financials.index');
     }
 
     /**

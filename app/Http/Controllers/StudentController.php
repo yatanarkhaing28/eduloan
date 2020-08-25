@@ -7,6 +7,7 @@ use App\Student;
 use App\Educationdetail;
 use App\Financial;
 
+
 class StudentController extends Controller
 {   
     // public function __construct($value=''){

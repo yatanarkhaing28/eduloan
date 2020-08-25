@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Educationdetail;
 
-class FormController extends Controller
+class EducationformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        // $students=Student::all();
-
-        return view('frontend.forms.index');
+        $educationdetails=Educationdetail::all();
+        return view('frontend.edus.index',compact('educationdetails'));
     }
 
     /**
@@ -26,8 +26,8 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('frontend.forms.create');
-        
+        $students = Student::all();
+        return view('frontend.edus.create',compact('students'));
     }
 
     /**
@@ -41,36 +41,27 @@ class FormController extends Controller
          // dd($request);
         // Validation
         $request->validate([
-            'name'=>'required',
-            'photo'=>'required',
-            'fathername'=>'required',
-            'nrcno'=>'required',
-            'state'=>'required',
-            'city'=>'required',
-            'phoneno'=>'required',
+            'rollno'=>'required',
+            'university'=>'required',
+            'year'=>'required',
+            'semester'=>'required',
+            'student'=>'required'
             
         ]);
         // If include file, upload
         // file upload
-        $imageName=time().'.'.$request->photo->extension();
-
-        $request->photo->move(public_path('backend/studentimg'),$imageName);
-
-        $myfile='backend/studentimg/'.$imageName;
+        
         // Data insert
-        $student=new Student;
-        $student->name=$request->name;
-        $student->photo=$myfile;
-        $student->fathername=$request->fathername;
-        $student->nrcno=$request->nrcno;
-        $student->state=$request->state;
-        $student->city=$request->city;
-        $student->phoneno=$request->phoneno;
+        $educationdetail=new Educationdetail;
+        $educationdetail->rollno=$request->rollno;
+        $educationdetail->university=$request->university;
+        $educationdetail->year=$request->year;
+        $educationdetail->semester=$request->semester;
+        $educationdetail->student_id=$request->student;
         
-        
-        $student->save();
+        $educationdetail->save();
         // Redirect
-        return redirect()->route('finan.create');
+        return redirect()->route('financials.index');;
     }
 
     /**

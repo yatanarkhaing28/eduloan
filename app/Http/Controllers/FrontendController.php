@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Student;
 
 class FrontendController extends Controller
 {
     public function home($value='')
     {
-    	// $items=Item::orderBy('id','desc')->take(6)->get();
+    	//$items=Item::orderBy('id','desc')->take(6)->get();
     	// // dd($items);
+
     	return view('frontend.home');
     }
+<<<<<<< HEAD
 
     public function about()
     {
@@ -22,6 +25,9 @@ class FrontendController extends Controller
     {
         return view('frontend.contact');
     }
+=======
+    
+>>>>>>> 9286ad19f89839ffa759c13973dc95d2373a6670
 
     public function register()
     {
@@ -38,5 +44,10 @@ class FrontendController extends Controller
     public function profile()
     {
         return view('frontend.profile');
+    }
+    public function stuinfo($value='')
+    {
+        $students=Student::all();
+        return view('frontend.stuinfo',compact('students'));
     }
 }

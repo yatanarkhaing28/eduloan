@@ -1,4 +1,8 @@
 @extends('frontendtemplate')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9286ad19f89839ffa759c13973dc95d2373a6670
 
 @section('content')
 <div class="container">
